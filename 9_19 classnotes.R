@@ -11,3 +11,7 @@
 - class:
 avector<- c(1999,2067,3999,7788)
 每個變數有很多筆資料: 依據屬性分成 numeric&字串
+  
+- install.packages("stringr")
+  install.packages("stringr")
+  download cheatsheet from RStudio
