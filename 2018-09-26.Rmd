@@ -14,10 +14,42 @@ a2Vector<-c(5L,6L,7L)
 - 等於 == 判斷兩變數是否相等
 - 大於等於 >=
 
+## 1.8 HELP
+函數或套件的使用說明
+
 ```{r}
 ?ggplot2
 ?ymd
 ```
 
+- round
+預設值是0
+```{r}
+round(x, digits = 6)
+```
+
+## Ch4
+
+```{r}
+library(readr)
+student <- read_csv("https://raw.githubusercontent.com/tpemartin/course-107-1-programming-for-data-science/master/data/student.csv")
+library(dplyr)
+library(magrittr)
+
+```
+Class
+
+```{r}
+student$身高
+```
+入學年、出生地、性別、身高、身高級距，何者是類別變數（即具有分類的意義）？
+A: 
+
+## Change Class
+```{r}
+as.factor(student$出生地) -> student$出生地
+```
+- 選單模式
+其實是相同類別但寫法不同,會造成分成不同類
 
 
