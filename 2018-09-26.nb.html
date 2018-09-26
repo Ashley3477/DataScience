@@ -244,24 +244,48 @@ library(magrittr)
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>入學年、出生地、性別、身高、身高級距，何者是類別變數（即具有分類的意義）？ A:</p>
-</div>
-<div id="change-class" class="section level2">
-<h2>Change Class</h2>
+<p>入學年、出生地、性別、身高、身高級距，何者是類別變數（即具有分類的意義）？ A: (入學年)、出生地、性別、身高級距</p>
+<ul>
+<li>Change Class</li>
+</ul>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-output-begin eyJkYXRhIjoiSW4gc3Ryc3BsaXQoY29kZSwgXCJcXG5cIiwgZml4ZWQgPSBUUlVFKSA6IGlucHV0IHN0cmluZyAxIGlzIGludmFsaWQgaW4gdGhpcyBsb2NhbGVcbiJ9 -->
-<pre><code>In strsplit(code, &quot;\n&quot;, fixed = TRUE) : input string 1 is invalid in this locale</code></pre>
-<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYXMuZmFjdG9yKHN0dWRlbnQk5Ye655Sf5ZywKSAtPiBzdHVkZW50JOWHuueUn+WcsFxuXG5gYGAifQ== -->
+<pre class="r"><code>as.factor(student$出生地) -&gt; student$出生地
+</code></pre>
+<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <ul>
-<li>選單模式 其實是相同類別但寫法不同,會造成分成不同類</li>
+<li>levels.</li>
 </ul>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGV2ZWxzKHN0dWRlbnQk5Ye655Sf5ZywKVxuYGBgIn0= -->
+<pre class="r"><code>levels(student$出生地)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<ul>
+<li>Count</li>
+</ul>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudGFibGUoc3R1ZGVudCTlh7rnlJ/lnLApXG5gYGAifQ== -->
+<pre class="r"><code>table(student$出生地)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<ul>
+<li>選單模式的使用 其實是相同類別但寫法不同,會造成分成不同類</li>
+</ul>
+</div>
+<div id="ordered-factor" class="section level2">
+<h2>Ordered factor</h2>
 <!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIjIwMTgtMDktMjYiDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpgYGB7cn0NCmE8LTUNCmEyPC01TA0KYVZlY3RvcjwtYyg1LDYsNykNCmEyVmVjdG9yPC1jKDVMLDZMLDdMKQ0KYGBgDQoxLjYuMyDpgo/ovK/pgYvnrpcNCg0KLSDnrYnmlrwgPT0g5Yik5pa35YWp6K6K5pW45piv5ZCm55u4562JDQotIOWkp+aWvOetieaWvCA+PQ0KDQojIyAxLjggSEVMUA0K5Ye95pW45oiW5aWX5Lu255qE5L2/55So6Kqq5piODQoNCmBgYHtyfQ0KP2dncGxvdDINCj95bWQNCmBgYA0KDQotIHJvdW5kDQrpoJDoqK3lgLzmmK8wDQpgYGB7cn0NCnJvdW5kKHgsIGRpZ2l0cyA9IDYpDQpgYGANCg0KIyMgQ2g0DQoNCmBgYHtyfQ0KbGlicmFyeShyZWFkcikNCnN0dWRlbnQgPC0gcmVhZF9jc3YoImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS90cGVtYXJ0aW4vY291cnNlLTEwNy0xLXByb2dyYW1taW5nLWZvci1kYXRhLXNjaWVuY2UvbWFzdGVyL2RhdGEvc3R1ZGVudC5jc3YiKQ0KbGlicmFyeShkcGx5cikNCmxpYnJhcnkobWFncml0dHIpDQoNCmBgYA0KQ2xhc3MNCg0KYGBge3J9DQpzdHVkZW50JOi6q+mrmA0KYGBgDQrlhaXlrbjlubTjgIHlh7rnlJ/lnLDjgIHmgKfliKXjgIHouqvpq5jjgIHouqvpq5jntJrot53vvIzkvZXogIXmmK/poZ7liKXorormlbjvvIjljbPlhbfmnInliIbpoZ7nmoTmhI/nvqnvvInvvJ8NCkE6IA0KDQojIyBDaGFuZ2UgQ2xhc3MNCmBgYHtyfQ0KYXMuZmFjdG9yKHN0dWRlbnQk5Ye655Sf5ZywKSAtPiBzdHVkZW50JOWHuueUn+WcsA0KYGBgDQotIOmBuOWWruaooeW8jw0K5YW25a+m5piv55u45ZCM6aGe5Yil5L2G5a+r5rOV5LiN5ZCMLOacg+mAoOaIkOWIhuaIkOS4jeWQjOmhng0KDQoNCg==</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIjIwMTgtMDktMjYiDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpgYGB7cn0NCmE8LTUNCmEyPC01TA0KYVZlY3RvcjwtYyg1LDYsNykNCmEyVmVjdG9yPC1jKDVMLDZMLDdMKQ0KYGBgDQoxLjYuMyDpgo/ovK/pgYvnrpcNCg0KLSDnrYnmlrwgPT0g5Yik5pa35YWp6K6K5pW45piv5ZCm55u4562JDQotIOWkp+aWvOetieaWvCA+PQ0KDQojIyAxLjggSEVMUA0K5Ye95pW45oiW5aWX5Lu255qE5L2/55So6Kqq5piODQoNCmBgYHtyfQ0KP2dncGxvdDINCj95bWQNCmBgYA0KDQotIHJvdW5kDQrpoJDoqK3lgLzmmK8wDQpgYGB7cn0NCnJvdW5kKHgsIGRpZ2l0cyA9IDYpDQpgYGANCg0KIyMgQ2g0DQoNCmBgYHtyfQ0KbGlicmFyeShyZWFkcikNCnN0dWRlbnQgPC0gcmVhZF9jc3YoImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS90cGVtYXJ0aW4vY291cnNlLTEwNy0xLXByb2dyYW1taW5nLWZvci1kYXRhLXNjaWVuY2UvbWFzdGVyL2RhdGEvc3R1ZGVudC5jc3YiKQ0KbGlicmFyeShkcGx5cikNCmxpYnJhcnkobWFncml0dHIpDQoNCmBgYA0KQ2xhc3MNCg0KYGBge3J9DQpzdHVkZW50JOi6q+mrmA0KYGBgDQrlhaXlrbjlubTjgIHlh7rnlJ/lnLDjgIHmgKfliKXjgIHouqvpq5jjgIHouqvpq5jntJrot53vvIzkvZXogIXmmK/poZ7liKXorormlbjvvIjljbPlhbfmnInliIbpoZ7nmoTmhI/nvqnvvInvvJ8NCkE6ICjlhaXlrbjlubQp44CB5Ye655Sf5Zyw44CB5oCn5Yil44CB6Lqr6auY57Sa6LedDQoNCi0gQ2hhbmdlIENsYXNzDQpgYGB7cn0NCmFzLmZhY3RvcihzdHVkZW50JOWHuueUn+WcsCkgLT4gc3R1ZGVudCTlh7rnlJ/lnLANCg0KYGBgDQotIGxldmVscy4NCmBgYHtyfQ0KbGV2ZWxzKHN0dWRlbnQk5Ye655Sf5ZywKQ0KYGBgDQotIENvdW50DQpgYGB7cn0NCnRhYmxlKHN0dWRlbnQk5Ye655Sf5ZywKQ0KYGBgDQotIOmBuOWWruaooeW8j+eahOS9v+eUqA0K5YW25a+m5piv55u45ZCM6aGe5Yil5L2G5a+r5rOV5LiN5ZCMLOacg+mAoOaIkOWIhuaIkOS4jeWQjOmhng0KDQojIyBPcmRlcmVkIGZhY3Rvcg0KDQoNCg0K</div>
 
 
 
