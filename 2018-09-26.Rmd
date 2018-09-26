@@ -95,6 +95,10 @@ b <- ymd_hms("2017-01-31 20:11:59")
 ```
 ymd(),ymd_hms()會自動去猜西元年、月、日及時間的斷句規則
 
-
+## 引入函數
+- to see how many libraries you have attached to the environment so far.
+```{r}
+> sessionInfo()
+```
 
 
