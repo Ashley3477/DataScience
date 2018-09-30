@@ -25,7 +25,7 @@ a2Vector<-c(5L,6L,7L)
 - round
 預設值是0
 ```{r}
-round(x, digits = 6)
+round(x, digits = 61)
 ```
 
 ## Ch4
