@@ -1,0 +1,19 @@
+---
+title: "練習題1"
+output: html_notebook
+---
+If you type c(2L, 'a', 3.0, 4), how will the data type of "2L" be changed?
+
+```{r}
+c(2L, 'a', 3.0, 4)
+?factor
+library(readr)
+student <- read_csv("https://raw.githubusercontent.com/tpemartin/course-107-1-programming-for-data-science/master/data/student.csv")
+install.packages("curl")
+data <- head(student)
+```
+```{r}
+gender <- c("男性", "男性", "女性", "男性", "女性", "男性")
+
+```
+
