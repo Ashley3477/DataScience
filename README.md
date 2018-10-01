@@ -18,3 +18,12 @@ avector<- c(1999,2067,3999,7788)
 - install.packages("stringr")
   install.packages("stringr")
   download cheatsheet from RStudio
+
+# Week3_2018-09-26
+- R basics
+  1. 變數型態:numeric、character、string、factor
+  2. Date and Time
+  3. class
+- At home:
+  1. organized the classnotes
+  2. practice the exercises
