@@ -2,13 +2,22 @@
 title: "2018-09-26"
 output: html_notebook
 ---
-
+## 4.2 Numeric (vector)
 ```{r}
 a<-5
 a2<-5L
 aVector<-c(5,6,7)
 a2Vector<-c(5L,6L,7L)
 ```
+使用class()查詢上述物件類別。
+```{r}
+class(a)
+class(a2)
+class(a2Vector)
+class(aVector)
+```
+###Operations on numeric objects
+
 1.6.3 邏輯運算
 
 - 等於 == 判斷兩變數是否相等
