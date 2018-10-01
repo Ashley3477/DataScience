@@ -312,22 +312,83 @@ num2&lt;-1000.001</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>1.6.3 邏輯運算</p>
 <ul>
-<li>等於 == 判斷兩變數是否相等</li>
-<li><p>大於等於 &gt;=</p></li>
-<li><p>round 預設值是0</p></li>
+<li>若數值長度超過 2^53，必須導入bit64 package</li>
 </ul>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucm91bmQoeCwgZGlnaXRzID0gNjEpXG5gYGAifQ== -->
-<pre class="r"><code>round(x, digits = 61)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShiaXQ2NClcbnByaW50KGFzLmludGVnZXI2NCgyKV41MywgZGlnaXRzPTIwKVxuYGBgIn0= -->
+<pre class="r"><code>library(bit64)
+print(as.integer64(2)^53, digits=20)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
-<div id="ch4" class="section level2">
-<h2>Ch4</h2>
+<div id="-character" class="section level2">
+<h2>字串 character</h2>
+<p>用雙引號“框起的文字或數字會被儲存為字串格式</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2hhcjE8LVwiYWJjVGVzdFwiIFxuY2hhcjI8LVwiMTAwXCJcbmNoYXIzPC1cIjIwMFwiXG5gYGAifQ== -->
+<pre class="r"><code>char1&lt;-&quot;abcTest&quot; 
+char2&lt;-&quot;100&quot;
+char3&lt;-&quot;200&quot;</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="-logic" class="section level2">
+<h2>布林變數 logic</h2>
+<p>用於邏輯判斷，可使用大寫TRUE或T代表真，大寫FALSE或F代表假。</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYm9vbFQ8LVRSVUVcbmJvb2xUMTwtVFxuYm9vbEY8LUZBTFNFXG5ib29sRjE8LUZcbmBgYCJ9 -->
+<pre class="r"><code>boolT&lt;-TRUE
+boolT1&lt;-T
+boolF&lt;-FALSE
+boolF1&lt;-F</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div class="section level2">
+<h2>邏輯運算</h2>
+<ul>
+<li>等於 == 判斷兩變數是否相等</li>
+<li>大於等於 &gt;=</li>
+<li>無條件捨去 floor()</li>
+<li>無條件進位 ceiling()</li>
+</ul>
+<p>#Ch4 R Basics ## Character/String (vector)</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYjwtXCLkvaDlpb1cIlxuYlZlY3RvcjwtYyhcIuS9oOWlvVwiLFwiSG93IGFyZSB5b3U/XCIpXG5gYGAifQ== -->
+<pre class="r"><code>b&lt;-&quot;你好&quot;
+bVector&lt;-c(&quot;你好&quot;,&quot;How are you?&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>使用class()查詢上述物件類別。</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2xhc3MoYilcbmBgYCJ9 -->
+<pre class="r"><code>class(b)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiY2hhcmFjdGVyXCJcbiJ9 -->
+<pre><code>[1] &quot;character&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2xhc3MoYlZlY3RvcilcbmBgYCJ9 -->
+<pre class="r"><code>class(bVector)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiY2hhcmFjdGVyXCJcbiJ9 -->
+<pre><code>[1] &quot;character&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="factor" class="section level2">
+<h2>Factor</h2>
+<p>used to work with categorical variables</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShyZWFkcilcbnN0dWRlbnQgPC0gcmVhZF9jc3YoXCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vdHBlbWFydGluL2NvdXJzZS0xMDctMS1wcm9ncmFtbWluZy1mb3ItZGF0YS1zY2llbmNlL21hc3Rlci9kYXRhL3N0dWRlbnQuY3N2XCIpXG5saWJyYXJ5KGRwbHlyKVxubGlicmFyeShtYWdyaXR0cilcblxuYGBgIn0= -->
@@ -347,20 +408,20 @@ library(magrittr)
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>入學年、出生地、性別、身高、身高級距，何者是類別變數（即具有分類的意義）？ A: (入學年)、出生地、性別、身高級距</p>
+<p>Q: 入學年、出生地、性別、身高、身高級距，何者是類別變數（即具有分類的意義）？ A: (入學年)、出生地、性別、身高級距 Q: 若資料有「學號」變數，你覺得它應該是什麼class？ A: 連續</p>
 <ul>
-<li>Change Class</li>
+<li>Change Class as.numeric(), as.character(), as.factor()</li>
 </ul>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYXMuZmFjdG9yKHN0dWRlbnQk5Ye655Sf5ZywKSAtPiBzdHVkZW50JOWHuueUn+WcsFxuXG5gYGAifQ== -->
-<pre class="r"><code>as.factor(student$出生地) -&gt; student$出生地
-</code></pre>
-<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiSW4gc3Ryc3BsaXQoY29kZSwgXCJcXG5cIiwgZml4ZWQgPSBUUlVFKSA6XG4gIGlucHV0IHN0cmluZyAxIGlzIGludmFsaWQgaW4gdGhpcyBsb2NhbGVcbiJ9 -->
+<pre><code>In strsplit(code, &quot;\n&quot;, fixed = TRUE) :
+  input string 1 is invalid in this locale</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <ul>
-<li>levels.</li>
+<li>Factor has levels.</li>
 </ul>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
@@ -379,13 +440,14 @@ library(magrittr)
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+<p>Q: 入學年、出生地、性別、身高、身高級距，其中那些變數不同類間可以排序（即比大小）？ A: 入學年、身高、身高級距</p>
 <ul>
-<li>選單模式的使用 其實是相同類別但寫法不同,會造成分成不同類</li>
+<li>選單模式的使用</li>
 </ul>
-</div>
-<div id="ordered-factor" class="section level2">
-<h2>Ordered factor</h2>
-<p>入學年、出生地、性別、身高、身高級距，其中那些變數不同類間可以排序（即比大小）？ A: 入學年、身高、身高級距</p>
+<p>其實是相同類別但寫法不同,會造成分成不同類</p>
+<ul>
+<li>Ordered factor</li>
+</ul>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZmFjdG9yKHN0dWRlbnQk6Lqr6auY57Sa6LedLFxuICAgICAgIGxldmVscz1jKFwiKDAsMTUwXVwiLFwiKDE1MCwxNTVdXCIsIFwiKDE1NSwxNjBdXCIsIFwiKDE2MCwxNjVdXCIgLFwiKDE2NSwxNzBdXCIsIFwiKDE3MCwxNzVdXCIgLFwiKDE3NSwxODBdXCIgLFwiKDE4MCwxODVdXCIsIFwiKDE4NSwyMDBdXCIpLFxuICAgICAgIG9yZGVyZWQ9VFJVRSkgLT4gc3R1ZGVudCTouqvpq5jntJrot51cblxuaGVpZ2h0TGV2ZWxzIDwtIGMoXCIoMCwxNTBdXCIsXCIoMTUwLDE1NV1cIiwgXCIoMTU1LDE2MF1cIiwgXCIoMTYwLDE2NV1cIiAsXCIoMTY1LDE3MF1cIiwgXCIoMTcwLDE3NV1cIiAsXCIoMTc1LDE4MF1cIiAsXCIoMTgwLDE4NV1cIiwgXCIoMTg1LDIwMF1cIilcbmZhY3RvcihzdHVkZW50JOi6q+mrmOe0mui3nSxcbiAgICAgICBsZXZlbHM9aGVpZ2h0TGV2ZWxzLFxuICAgICAgIG9yZGVyZWQ9VFJVRSkgLT4gc3R1ZGVudCTouqvpq5jntJrot51cbmBgYCJ9 -->
@@ -401,13 +463,17 @@ factor(student$身高級距,
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
-<div id="data-and-time" class="section level2">
-<h2>4.5 Data and Time</h2>
+<div id="date-and-time" class="section level2">
+<h2>Date and Time</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYTwtXCIyMDE3LTAxLTMxXCJcbmBgYCJ9 -->
-<pre class="r"><code>a&lt;-&quot;2017-01-31&quot;</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYTwtXCIyMDE3LTAxLTMxXCJcbmNsYXNzKGEpXG5gYGAifQ== -->
+<pre class="r"><code>a&lt;-&quot;2017-01-31&quot;
+class(a)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiY2hhcmFjdGVyXCJcbiJ9 -->
+<pre><code>[1] &quot;character&quot;</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <ul>
@@ -417,6 +483,9 @@ factor(student$身高級距,
 <li>code 有時間概念的通用規格 the number of days since 1970-01-01.</li>
 <li>package: lubridate 把字串轉成國際通用的規格</li>
 </ol>
+<ul>
+<li>Two different classes</li>
+</ul>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShkcGx5cilcbmxpYnJhcnkobHVicmlkYXRlKVxuYSA8LSB5bWQoXCIyMDE3LTAxLTMxXCIpIFxuYiA8LSB5bWRfaG1zKFwiMjAxNy0wMS0zMSAyMDoxMTo1OVwiKVxuYGBgIn0= -->
@@ -427,25 +496,58 @@ b &lt;- ymd_hms(&quot;2017-01-31 20:11:59&quot;)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>ymd(),ymd_hms()會自動去猜西元年、月、日及時間的斷句規則</p>
-</div>
-<div class="section level2">
-<h2>引入函數</h2>
+<p>ymd(),ymd_hms()會自動去猜西元年、月、日及時間的斷句規則 Q:a,b的class是什麼？</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2xhc3MoYSlcbmBgYCJ9 -->
+<pre class="r"><code>class(a)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiY2hhcmFjdGVyXCJcbiJ9 -->
+<pre><code>[1] &quot;character&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2xhc3MoYilcbmBgYCJ9 -->
+<pre class="r"><code>class(b)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiY2hhcmFjdGVyXCJcbiJ9 -->
+<pre><code>[1] &quot;character&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
 <ul>
-<li>to see how many libraries you have attached to the environment so far.</li>
+<li>Two ways to call functions Method 1:</li>
 </ul>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShsdWJyaWRhdGUpXG55bWQoXCIyMDE3LzAxLzMxXCIpXG5gYGAifQ== -->
+<pre class="r"><code>library(lubridate)
+ymd(&quot;2017/01/31&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Method 1一口氣引入lubridate所有函數，且一直存在程式環境裡。 Method 2</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubHVicmlkYXRlOjp5bWQoXCIyMDE3LzAxLzMxXCIpXG5gYGAifQ== -->
+<pre class="r"><code>lubridate::ymd(&quot;2017/01/31&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Method 2沒有引入lubridate所有函數，只在那一行程式使用單單那一個函數。 ## 引入函數 Q: to see how many libraries you have attached to the environment so far.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuPiBzZXNzaW9uSW5mbygpXG5gYGAifQ== -->
 <pre class="r"><code>&gt; sessionInfo()</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3I6IHVuZXhwZWN0ZWQgJz4nIGluIFwiPlwiXG4ifQ== -->
+<pre><code>Error: unexpected '&gt;' in &quot;&gt;&quot;</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 </div>
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIjIwMTgtMDktMjYiDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KIyMgNC4yIE51bWVyaWMgKHZlY3RvcikNCmBgYHtyfQ0KYTwtNQ0KYTI8LTVMDQphVmVjdG9yPC1jKDUsNiw3KQ0KYTJWZWN0b3I8LWMoNUwsNkwsN0wpDQpgYGANCuS9v+eUqGNsYXNzKCnmn6XoqaLkuIrov7Dnianku7bpoZ7liKXjgIINCmBgYHtyfQ0KY2xhc3MoYSkNCmNsYXNzKGEyKQ0KY2xhc3MoYTJWZWN0b3IpDQpjbGFzcyhhVmVjdG9yKQ0KYGBgDQojIyAxLjIg5Ye95pW45L2/55SoDQogLSAgbWVhbigpDQpgYGB7cn0NCm1lYW4oYygxLDIsMyw0LDUsNikpDQpgYGANCiAtID/lh73mlbg6IOWHveaVuOaIluWll+S7tueahOS9v+eUqOiqquaYjg0KYGBge3J9DQo/Z2dwbG90Mg0KP3ltZA0KYGBgDQogLSDluo/liJflh73mlbgNCumZpOmdnuacieaMh+WumuWPg+aVuOWQjeeose+8jOWHveaVuOeahOWPg+aVuOioreWumuaciemghuW6j+aAp++8jOWmguW6j+WIl+eUoueUn+WHveaVuHNlcSgp77yM5Y+D5pW46aCG5bqP54K6ZnJvbSwgdG8sIGJ577yM5Luj6KGo5bqP5YiX6LW36bue44CB5bqP5YiX57WC6bue77yM5Lul5Y+K55u46ZqU5Zau5L2N44CCDQpgYGB7cn0NCnNlcShmcm9tPTEzMix0bz00NTgsYnk9MzMpDQpgYGANCmBgYHtyfQ0Kc2VxKDEzMiw0NTgsMzMpDQpgYGANCiMjIDEuMyDorormlbjoqK3lrpoNCiAtIOiuiuaVuOWQjeeosTwt6K6K5pW45YWn5a65DQogLSDorormlbjlkI3nqLE96K6K5pW45YWn5a65DQogLSBzdHIoKTog55So5Zyo5qqi5p+l6IiH57i96Ka95ZCE6aGe6K6K5pW45Z6L5oWLDQogDQogDQpgYGB7cn0NCiBkcjwtMzIyMjINCiBzdHIoZHIpDQogYWI8LTJMDQogc3RyKGFiKQ0KYGBgDQoNCiMxLjUg6LOH5paZ5Z6L5oWLDQoNCiMj5pW45YC8IG51bWVyaWMNCiAtIOaVuOWAvOWMheaLrOaVtOaVuO+8iOaykuacieWwj+aVuOm7nu+8ieiIh+a1rum7nuaVuO+8iOacieWwj+aVuOm7nu+8ieeahOaVuOWAvA0KDQpgYGB7cn0NCm51bTE8LTEwMCANCm51bTI8LTEwMDAuMDAxDQpgYGANCg0KMS42LjMg6YKP6Lyv6YGL566XDQoNCi0g562J5pa8ID09IOWIpOaWt+WFqeiuiuaVuOaYr+WQpuebuOetiQ0KLSDlpKfmlrznrYnmlrwgPj0NCg0KLSByb3VuZA0K6aCQ6Kit5YC85pivMA0KYGBge3J9DQpyb3VuZCh4LCBkaWdpdHMgPSA2MSkNCmBgYA0KDQojIyBDaDQNCg0KYGBge3J9DQpsaWJyYXJ5KHJlYWRyKQ0Kc3R1ZGVudCA8LSByZWFkX2NzdigiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL3RwZW1hcnRpbi9jb3Vyc2UtMTA3LTEtcHJvZ3JhbW1pbmctZm9yLWRhdGEtc2NpZW5jZS9tYXN0ZXIvZGF0YS9zdHVkZW50LmNzdiIpDQpsaWJyYXJ5KGRwbHlyKQ0KbGlicmFyeShtYWdyaXR0cikNCg0KYGBgDQpDbGFzcw0KDQpgYGB7cn0NCnN0dWRlbnQk6Lqr6auYDQpgYGANCuWFpeWtuOW5tOOAgeWHuueUn+WcsOOAgeaAp+WIpeOAgei6q+mrmOOAgei6q+mrmOe0mui3ne+8jOS9leiAheaYr+mhnuWIpeiuiuaVuO+8iOWNs+WFt+acieWIhumhnueahOaEj+e+qe+8ie+8nw0KQTogKOWFpeWtuOW5tCnjgIHlh7rnlJ/lnLDjgIHmgKfliKXjgIHouqvpq5jntJrot50NCg0KLSBDaGFuZ2UgQ2xhc3MNCmBgYHtyfQ0KYXMuZmFjdG9yKHN0dWRlbnQk5Ye655Sf5ZywKSAtPiBzdHVkZW50JOWHuueUn+WcsA0KDQpgYGANCi0gbGV2ZWxzLg0KYGBge3J9DQpsZXZlbHMoc3R1ZGVudCTlh7rnlJ/lnLApDQpgYGANCi0gQ291bnQNCmBgYHtyfQ0KdGFibGUoc3R1ZGVudCTlh7rnlJ/lnLApDQpgYGANCi0g6YG45Zau5qih5byP55qE5L2/55SoDQrlhbblr6bmmK/nm7jlkIzpoZ7liKXkvYblr6vms5XkuI3lkIws5pyD6YCg5oiQ5YiG5oiQ5LiN5ZCM6aGeDQoNCiMjIE9yZGVyZWQgZmFjdG9yDQrlhaXlrbjlubTjgIHlh7rnlJ/lnLDjgIHmgKfliKXjgIHouqvpq5jjgIHouqvpq5jntJrot53vvIzlhbbkuK3pgqPkupvorormlbjkuI3lkIzpoZ7plpPlj6/ku6XmjpLluo/vvIjljbPmr5TlpKflsI/vvInvvJ8NCkE6IOWFpeWtuOW5tOOAgei6q+mrmOOAgei6q+mrmOe0mui3nQ0KDQpgYGB7cn0NCmZhY3RvcihzdHVkZW50JOi6q+mrmOe0mui3nSwNCiAgICAgICBsZXZlbHM9YygiKDAsMTUwXSIsIigxNTAsMTU1XSIsICIoMTU1LDE2MF0iLCAiKDE2MCwxNjVdIiAsIigxNjUsMTcwXSIsICIoMTcwLDE3NV0iICwiKDE3NSwxODBdIiAsIigxODAsMTg1XSIsICIoMTg1LDIwMF0iKSwNCiAgICAgICBvcmRlcmVkPVRSVUUpIC0+IHN0dWRlbnQk6Lqr6auY57Sa6LedDQoNCmhlaWdodExldmVscyA8LSBjKCIoMCwxNTBdIiwiKDE1MCwxNTVdIiwgIigxNTUsMTYwXSIsICIoMTYwLDE2NV0iICwiKDE2NSwxNzBdIiwgIigxNzAsMTc1XSIgLCIoMTc1LDE4MF0iICwiKDE4MCwxODVdIiwgIigxODUsMjAwXSIpDQpmYWN0b3Ioc3R1ZGVudCTouqvpq5jntJrot50sDQogICAgICAgbGV2ZWxzPWhlaWdodExldmVscywNCiAgICAgICBvcmRlcmVkPVRSVUUpIC0+IHN0dWRlbnQk6Lqr6auY57Sa6LedDQpgYGANCiMjIDQuNSBEYXRhIGFuZCBUaW1lDQoNCmBgYHtyfQ0KYTwtIjIwMTctMDEtMzEiDQpgYGANCi0gYeeahGNsYXNz5piv5LuA6bq877yfDQrpm7vohabkuI3mnIPnn6XpgZPmmK/mmYLplpMNCg0KICAxLiBjb2RlIOacieaZgumWk+amguW/teeahOmAmueUqOimj+agvA0KdGhlIG51bWJlciBvZiBkYXlzIHNpbmNlIDE5NzAtMDEtMDEuDQogIDIuIHBhY2thZ2U6IGx1YnJpZGF0ZQ0KICAgICDmiorlrZfkuLLovYnmiJDlnIvpmpvpgJrnlKjnmoTopo/moLwNCmBgYHtyfQ0KbGlicmFyeShkcGx5cikNCmxpYnJhcnkobHVicmlkYXRlKQ0KYSA8LSB5bWQoIjIwMTctMDEtMzEiKSANCmIgPC0geW1kX2htcygiMjAxNy0wMS0zMSAyMDoxMTo1OSIpDQpgYGANCnltZCgpLHltZF9obXMoKeacg+iHquWLleWOu+eMnOilv+WFg+W5tOOAgeaciOOAgeaXpeWPiuaZgumWk+eahOaWt+WPpeimj+WJhw0KDQojIyDlvJXlhaXlh73mlbgNCi0gdG8gc2VlIGhvdyBtYW55IGxpYnJhcmllcyB5b3UgaGF2ZSBhdHRhY2hlZCB0byB0aGUgZW52aXJvbm1lbnQgc28gZmFyLg0KYGBge3J9DQo+IHNlc3Npb25JbmZvKCkNCmBgYA0KDQoNCg==</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIjIwMTgtMDktMjYiDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KIyMgNC4yIE51bWVyaWMgKHZlY3RvcikNCmBgYHtyfQ0KYTwtNQ0KYTI8LTVMDQphVmVjdG9yPC1jKDUsNiw3KQ0KYTJWZWN0b3I8LWMoNUwsNkwsN0wpDQpgYGANCuS9v+eUqGNsYXNzKCnmn6XoqaLkuIrov7Dnianku7bpoZ7liKXjgIINCmBgYHtyfQ0KY2xhc3MoYSkNCmNsYXNzKGEyKQ0KY2xhc3MoYTJWZWN0b3IpDQpjbGFzcyhhVmVjdG9yKQ0KYGBgDQojIyAxLjIg5Ye95pW45L2/55SoDQogLSAgbWVhbigpDQpgYGB7cn0NCm1lYW4oYygxLDIsMyw0LDUsNikpDQpgYGANCiAtID/lh73mlbg6IOWHveaVuOaIluWll+S7tueahOS9v+eUqOiqquaYjg0KYGBge3J9DQo/Z2dwbG90Mg0KP3ltZA0KYGBgDQogLSDluo/liJflh73mlbgNCumZpOmdnuacieaMh+WumuWPg+aVuOWQjeeose+8jOWHveaVuOeahOWPg+aVuOioreWumuaciemghuW6j+aAp++8jOWmguW6j+WIl+eUoueUn+WHveaVuHNlcSgp77yM5Y+D5pW46aCG5bqP54K6ZnJvbSwgdG8sIGJ577yM5Luj6KGo5bqP5YiX6LW36bue44CB5bqP5YiX57WC6bue77yM5Lul5Y+K55u46ZqU5Zau5L2N44CCDQpgYGB7cn0NCnNlcShmcm9tPTEzMix0bz00NTgsYnk9MzMpDQpgYGANCmBgYHtyfQ0Kc2VxKDEzMiw0NTgsMzMpDQpgYGANCiMjIDEuMyDorormlbjoqK3lrpoNCiAtIOiuiuaVuOWQjeeosTwt6K6K5pW45YWn5a65DQogLSDorormlbjlkI3nqLE96K6K5pW45YWn5a65DQogLSBzdHIoKTog55So5Zyo5qqi5p+l6IiH57i96Ka95ZCE6aGe6K6K5pW45Z6L5oWLDQogDQogDQpgYGB7cn0NCiBkcjwtMzIyMjINCiBzdHIoZHIpDQogYWI8LTJMDQogc3RyKGFiKQ0KYGBgDQoNCiMxLjUg6LOH5paZ5Z6L5oWLDQoNCiMj5pW45YC8IG51bWVyaWMNCiAtIOaVuOWAvOWMheaLrOaVtOaVuO+8iOaykuacieWwj+aVuOm7nu+8ieiIh+a1rum7nuaVuO+8iOacieWwj+aVuOm7nu+8ieeahOaVuOWAvA0KDQpgYGB7cn0NCm51bTE8LTEwMCANCm51bTI8LTEwMDAuMDAxDQpgYGANCiAtIOiLpeaVuOWAvOmVt+W6pui2hemBjiAyXjUz77yM5b+F6aCI5bCO5YWlYml0NjQgcGFja2FnZQ0KYGBge3J9DQpsaWJyYXJ5KGJpdDY0KQ0KcHJpbnQoYXMuaW50ZWdlcjY0KDIpXjUzLCBkaWdpdHM9MjApDQpgYGANCiMj5a2X5LiyIGNoYXJhY3Rlcg0K55So6ZuZ5byV6JmfIuahhui1t+eahOaWh+Wtl+aIluaVuOWtl+acg+iiq+WEsuWtmOeCuuWtl+S4suagvOW8jw0KYGBge3J9DQpjaGFyMTwtImFiY1Rlc3QiIA0KY2hhcjI8LSIxMDAiDQpjaGFyMzwtIjIwMCINCmBgYA0KIyPluIPmnpforormlbggbG9naWMNCueUqOaWvOmCj+i8r+WIpOaWt++8jOWPr+S9v+eUqOWkp+Wvq1RSVUXmiJZU5Luj6KGo55yf77yM5aSn5a+rRkFMU0XmiJZG5Luj6KGo5YGH44CCDQpgYGB7cn0NCmJvb2xUPC1UUlVFDQpib29sVDE8LVQNCmJvb2xGPC1GQUxTRQ0KYm9vbEYxPC1GDQpgYGANCg0KIyPpgo/ovK/pgYvnrpcNCg0KIC0g562J5pa8ID09IOWIpOaWt+WFqeiuiuaVuOaYr+WQpuebuOetiQ0KIC0g5aSn5pa8562J5pa8ID49DQogLSDnhKHmop3ku7bmjajljrsgZmxvb3IoKQ0KIC0g54Sh5qKd5Lu26YCy5L2NIGNlaWxpbmcoKQ0KIA0KICNDaDQgUiBCYXNpY3MNCiMjIENoYXJhY3Rlci9TdHJpbmcgKHZlY3RvcikNCmBgYHtyfQ0KYjwtIuS9oOWlvSINCmJWZWN0b3I8LWMoIuS9oOWlvSIsIkhvdyBhcmUgeW91PyIpDQpgYGANCuS9v+eUqGNsYXNzKCnmn6XoqaLkuIrov7Dnianku7bpoZ7liKXjgIINCmBgYHtyfQ0KY2xhc3MoYikNCmNsYXNzKGJWZWN0b3IpDQpgYGANCiMjIEZhY3Rvcg0KdXNlZCB0byB3b3JrIHdpdGggY2F0ZWdvcmljYWwgdmFyaWFibGVzDQpgYGB7cn0NCmxpYnJhcnkocmVhZHIpDQpzdHVkZW50IDwtIHJlYWRfY3N2KCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vdHBlbWFydGluL2NvdXJzZS0xMDctMS1wcm9ncmFtbWluZy1mb3ItZGF0YS1zY2llbmNlL21hc3Rlci9kYXRhL3N0dWRlbnQuY3N2IikNCmxpYnJhcnkoZHBseXIpDQpsaWJyYXJ5KG1hZ3JpdHRyKQ0KDQpgYGANCkNsYXNzDQoNCmBgYHtyfQ0Kc3R1ZGVudCTouqvpq5gNCmBgYA0KUTog5YWl5a245bm044CB5Ye655Sf5Zyw44CB5oCn5Yil44CB6Lqr6auY44CB6Lqr6auY57Sa6Led77yM5L2V6ICF5piv6aGe5Yil6K6K5pW477yI5Y2z5YW35pyJ5YiG6aGe55qE5oSP576p77yJ77yfDQpBOiAo5YWl5a245bm0KeOAgeWHuueUn+WcsOOAgeaAp+WIpeOAgei6q+mrmOe0mui3nQ0KUTog6Iul6LOH5paZ5pyJ44CM5a246Jmf44CN6K6K5pW477yM5L2g6Ka65b6X5a6D5oeJ6Kmy5piv5LuA6bq8Y2xhc3PvvJ8NCkE6IOmAo+e6jA0KDQotIENoYW5nZSBDbGFzcw0KYXMubnVtZXJpYygpLCBhcy5jaGFyYWN0ZXIoKSwgYXMuZmFjdG9yKCkNCmBgYHtyfQ0KYXMuZmFjdG9yKHN0dWRlbnQk5Ye655Sf5ZywKSAtPiBzdHVkZW50JOWHuueUn+WcsA0KDQpgYGANCi0gRmFjdG9yIGhhcyBsZXZlbHMuDQpgYGB7cn0NCmxldmVscyhzdHVkZW50JOWHuueUn+WcsCkNCmBgYA0KLSBDb3VudA0KYGBge3J9DQp0YWJsZShzdHVkZW50JOWHuueUn+WcsCkNCmBgYA0KUTog5YWl5a245bm044CB5Ye655Sf5Zyw44CB5oCn5Yil44CB6Lqr6auY44CB6Lqr6auY57Sa6Led77yM5YW25Lit6YKj5Lqb6K6K5pW45LiN5ZCM6aGe6ZaT5Y+v5Lul5o6S5bqP77yI5Y2z5q+U5aSn5bCP77yJ77yfDQpBOiDlhaXlrbjlubTjgIHouqvpq5jjgIHouqvpq5jntJrot50NCg0KLSDpgbjllq7mqKHlvI/nmoTkvb/nlKgNCg0K5YW25a+m5piv55u45ZCM6aGe5Yil5L2G5a+r5rOV5LiN5ZCMLOacg+mAoOaIkOWIhuaIkOS4jeWQjOmhng0KDQogLSBPcmRlcmVkIGZhY3Rvcg0KDQpgYGB7cn0NCmZhY3RvcihzdHVkZW50JOi6q+mrmOe0mui3nSwNCiAgICAgICBsZXZlbHM9YygiKDAsMTUwXSIsIigxNTAsMTU1XSIsICIoMTU1LDE2MF0iLCAiKDE2MCwxNjVdIiAsIigxNjUsMTcwXSIsICIoMTcwLDE3NV0iICwiKDE3NSwxODBdIiAsIigxODAsMTg1XSIsICIoMTg1LDIwMF0iKSwNCiAgICAgICBvcmRlcmVkPVRSVUUpIC0+IHN0dWRlbnQk6Lqr6auY57Sa6LedDQoNCmhlaWdodExldmVscyA8LSBjKCIoMCwxNTBdIiwiKDE1MCwxNTVdIiwgIigxNTUsMTYwXSIsICIoMTYwLDE2NV0iICwiKDE2NSwxNzBdIiwgIigxNzAsMTc1XSIgLCIoMTc1LDE4MF0iICwiKDE4MCwxODVdIiwgIigxODUsMjAwXSIpDQpmYWN0b3Ioc3R1ZGVudCTouqvpq5jntJrot50sDQogICAgICAgbGV2ZWxzPWhlaWdodExldmVscywNCiAgICAgICBvcmRlcmVkPVRSVUUpIC0+IHN0dWRlbnQk6Lqr6auY57Sa6LedDQpgYGANCiMjIERhdGUgYW5kIFRpbWUNCg0KYGBge3J9DQphPC0iMjAxNy0wMS0zMSINCmNsYXNzKGEpDQpgYGANCi0gYeeahGNsYXNz5piv5LuA6bq877yfDQrpm7vohabkuI3mnIPnn6XpgZPmmK/mmYLplpMNCg0KICAxLiBjb2RlIOacieaZgumWk+amguW/teeahOmAmueUqOimj+agvA0KdGhlIG51bWJlciBvZiBkYXlzIHNpbmNlIDE5NzAtMDEtMDEuDQogIDIuIHBhY2thZ2U6IGx1YnJpZGF0ZQ0KICAgICDmiorlrZfkuLLovYnmiJDlnIvpmpvpgJrnlKjnmoTopo/moLwNCiAgICAgDQogLSBUd28gZGlmZmVyZW50IGNsYXNzZXMNCiANCmBgYHtyfQ0KbGlicmFyeShkcGx5cikNCmxpYnJhcnkobHVicmlkYXRlKQ0KYSA8LSB5bWQoIjIwMTctMDEtMzEiKSANCmIgPC0geW1kX2htcygiMjAxNy0wMS0zMSAyMDoxMTo1OSIpDQpgYGANCnltZCgpLHltZF9obXMoKeacg+iHquWLleWOu+eMnOilv+WFg+W5tOOAgeaciOOAgeaXpeWPiuaZgumWk+eahOaWt+WPpeimj+WJhw0KUTphLGLnmoRjbGFzc+aYr+S7gOm6vO+8nw0KYGBge3J9DQpjbGFzcyhhKQ0KY2xhc3MoYikNCmBgYA0KIC0gVHdvIHdheXMgdG8gY2FsbCBmdW5jdGlvbnMNCk1ldGhvZCAxOg0KYGBge3J9DQpsaWJyYXJ5KGx1YnJpZGF0ZSkNCnltZCgiMjAxNy8wMS8zMSIpDQpgYGANCk1ldGhvZCAx5LiA5Y+j5rCj5byV5YWlbHVicmlkYXRl5omA5pyJ5Ye95pW477yM5LiU5LiA55u05a2Y5Zyo56iL5byP55Kw5aKD6KOh44CCDQpNZXRob2QgMg0KYGBge3J9DQpsdWJyaWRhdGU6OnltZCgiMjAxNy8wMS8zMSIpDQpgYGANCk1ldGhvZCAy5rKS5pyJ5byV5YWlbHVicmlkYXRl5omA5pyJ5Ye95pW477yM5Y+q5Zyo6YKj5LiA6KGM56iL5byP5L2/55So5Zau5Zau6YKj5LiA5YCL5Ye95pW444CCDQojIyDlvJXlhaXlh73mlbgNClE6IHRvIHNlZSBob3cgbWFueSBsaWJyYXJpZXMgeW91IGhhdmUgYXR0YWNoZWQgdG8gdGhlIGVudmlyb25tZW50IHNvIGZhci4NCmBgYHtyfQ0KPiBzZXNzaW9uSW5mbygpDQpgYGANCg0KDQo=</div>
 
 
 

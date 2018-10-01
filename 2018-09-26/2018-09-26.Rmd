@@ -68,19 +68,35 @@ char1<-"abcTest"
 char2<-"100"
 char3<-"200"
 ```
-1.6.3 邏輯運算
-
-- 等於 == 判斷兩變數是否相等
-- 大於等於 >=
-
-- round
-預設值是0
+##布林變數 logic
+用於邏輯判斷，可使用大寫TRUE或T代表真，大寫FALSE或F代表假。
 ```{r}
-round(x, digits = 61)
+boolT<-TRUE
+boolT1<-T
+boolF<-FALSE
+boolF1<-F
 ```
 
-## Ch4
+##邏輯運算
 
+ - 等於 == 判斷兩變數是否相等
+ - 大於等於 >=
+ - 無條件捨去 floor()
+ - 無條件進位 ceiling()
+ 
+ #Ch4 R Basics
+## Character/String (vector)
+```{r}
+b<-"你好"
+bVector<-c("你好","How are you?")
+```
+使用class()查詢上述物件類別。
+```{r}
+class(b)
+class(bVector)
+```
+## Factor
+used to work with categorical variables
 ```{r}
 library(readr)
 student <- read_csv("https://raw.githubusercontent.com/tpemartin/course-107-1-programming-for-data-science/master/data/student.csv")
@@ -93,15 +109,18 @@ Class
 ```{r}
 student$身高
 ```
-入學年、出生地、性別、身高、身高級距，何者是類別變數（即具有分類的意義）？
+Q: 入學年、出生地、性別、身高、身高級距，何者是類別變數（即具有分類的意義）？
 A: (入學年)、出生地、性別、身高級距
+Q: 若資料有「學號」變數，你覺得它應該是什麼class？
+A: 連續
 
 - Change Class
+as.numeric(), as.character(), as.factor()
 ```{r}
 as.factor(student$出生地) -> student$出生地
 
 ```
-- levels.
+- Factor has levels.
 ```{r}
 levels(student$出生地)
 ```
@@ -109,12 +128,14 @@ levels(student$出生地)
 ```{r}
 table(student$出生地)
 ```
+Q: 入學年、出生地、性別、身高、身高級距，其中那些變數不同類間可以排序（即比大小）？
+A: 入學年、身高、身高級距
+
 - 選單模式的使用
+
 其實是相同類別但寫法不同,會造成分成不同類
 
-## Ordered factor
-入學年、出生地、性別、身高、身高級距，其中那些變數不同類間可以排序（即比大小）？
-A: 入學年、身高、身高級距
+ - Ordered factor
 
 ```{r}
 factor(student$身高級距,
@@ -126,10 +147,11 @@ factor(student$身高級距,
        levels=heightLevels,
        ordered=TRUE) -> student$身高級距
 ```
-## 4.5 Data and Time
+## Date and Time
 
 ```{r}
 a<-"2017-01-31"
+class(a)
 ```
 - a的class是什麼？
 電腦不會知道是時間
@@ -138,6 +160,9 @@ a<-"2017-01-31"
 the number of days since 1970-01-01.
   2. package: lubridate
      把字串轉成國際通用的規格
+     
+ - Two different classes
+ 
 ```{r}
 library(dplyr)
 library(lubridate)
@@ -145,9 +170,25 @@ a <- ymd("2017-01-31")
 b <- ymd_hms("2017-01-31 20:11:59")
 ```
 ymd(),ymd_hms()會自動去猜西元年、月、日及時間的斷句規則
-
+Q:a,b的class是什麼？
+```{r}
+class(a)
+class(b)
+```
+ - Two ways to call functions
+Method 1:
+```{r}
+library(lubridate)
+ymd("2017/01/31")
+```
+Method 1一口氣引入lubridate所有函數，且一直存在程式環境裡。
+Method 2
+```{r}
+lubridate::ymd("2017/01/31")
+```
+Method 2沒有引入lubridate所有函數，只在那一行程式使用單單那一個函數。
 ## 引入函數
-- to see how many libraries you have attached to the environment so far.
+Q: to see how many libraries you have attached to the environment so far.
 ```{r}
 > sessionInfo()
 ```
