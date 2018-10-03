@@ -1,0 +1,36 @@
+---
+title: "2018-10-03"
+output: html_notebook
+---
+
+
+```{r}
+library(dplyr)
+library(lubridate)
+a <- ymd("2017-01-31") 
+b <- ymd_hms("2017-01-31 20:11:59")
+```
+
+# 4.6 Operation on Strings
+
+## Subset
+
+Q Use > ?str_sub() to get the function help. And run examples in a code chunk.
+```{r}
+library(stringr)
+?str_sub()
+hw <- "Hadley Wickham"
+
+str_sub(hw, 1, 6)
+str_sub(hw, end = 6)
+str_sub(hw, 8, 14)
+str_sub(hw, 8)
+str_sub(hw, c(1, 8), c(6, 14))
+
+```
+資料：學生學號
+```{r}
+library(readr)
+studentID <- read_csv("https://raw.githubusercontent.com/tpemartin/github-data/master/studentID.csv")
+```
+
