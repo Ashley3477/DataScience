@@ -240,9 +240,21 @@ studentID &lt;- read_csv(&quot;https://raw.githubusercontent.com/tpemartin/githu
 <p>Q 利用str_sub()取出每位學生系別。</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3RyX3N1YigpXG5gYGAifQ== -->
-<pre class="r"><code>str_sub()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuP3N0cl9zdWIoKVxuYGBgIn0= -->
+<pre class="r"><code>?str_sub()</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiV2FybmluZyBtZXNzYWdlOlxuSW4gc3Ryc3BsaXQoY29kZSwgXCJcXG5cIiwgZml4ZWQgPSBUUlVFKSA6XG4gIGlucHV0IHN0cmluZyAxIGlzIGludmFsaWQgaW4gdGhpcyBsb2NhbGVcbiJ9 -->
+<pre><code>Warning message:
+In strsplit(code, &quot;\n&quot;, fixed = TRUE) :
+  input string 1 is invalid in this locale</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3RyX3N1YihzdHVkZW50SUQo5a246JmfLCBmcm9tPSA1LCB0byA9IDYpKVxuYGBgIn0= -->
+<pre class="r"><code>str_sub(studentID(學號, from= 5, to = 6))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gc3R1ZGVudElEKOWtuOiZnywgZnJvbSA9IDUsIHRvID0gNikgOiBcbiAgY291bGQgbm90IGZpbmQgZnVuY3Rpb24gXCJzdHVkZW50SURcIlxuIn0= -->
+<pre><code>Error in studentID(學號, from = 5, to = 6) : 
+  could not find function &quot;studentID&quot;</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <ul>
@@ -251,16 +263,79 @@ studentID &lt;- read_csv(&quot;https://raw.githubusercontent.com/tpemartin/githu
 <p>Use &gt; ?str_c() to get the function help. 練習1</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3RyX2MobGV0dGVycyxMRVRURVJTKVxuc3RyX2MobGV0dGVycyxMRVRURVJTLHNlcD1cIi1cIilcbnN0cl9jKFwibG93ZXJjYXNlOiBcIiwgbGV0dGVycywgXCIsIGNhcGl0YWw6IFwiLCBMRVRURVJTKVxuYGBgIn0= -->
-<pre class="r"><code>str_c(letters,LETTERS)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuP3N0cl9jXG5zdHJfYyhsZXR0ZXJzLExFVFRFUlMpXG5zdHJfYyhsZXR0ZXJzLExFVFRFUlMsc2VwPVwiLVwiKVxuc3RyX2MoXCJsb3dlcmNhc2U6IFwiLCBsZXR0ZXJzLCBcIiwgY2FwaXRhbDogXCIsIExFVFRFUlMpXG5gYGAifQ== -->
+<pre class="r"><code>?str_c
+str_c(letters,LETTERS)
 str_c(letters,LETTERS,sep=&quot;-&quot;)
 str_c(&quot;lowercase: &quot;, letters, &quot;, capital: &quot;, LETTERS)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>letter LETTERS 練習2</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShyZWFkcilcbmdpdGh1YkRhdGEgPC0gcmVhZF9jc3YoXCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vdHBlbWFydGluL2dpdGh1Yi1kYXRhL21hc3Rlci9naXRodWJEYXRhLmNzdlwiKVxuZ2l0aHViRGF0YVtjKDIsMyw0KSxdIC0+IHNhbXBsZUdpdGh1Ylxuc3RyX2Moc2FtcGxlR2l0aHViJGBHaXRIdWIgdXNlcm5hbWVgLFxuICAgICAgc2FtcGxlR2l0aHViJGBHaXRIdWIgcmVwbyBuYW1lYClcbnN0cl9jKFwiaHR0cHM6Ly9naXRodWIuY29tL1wiLFxuICAgICAgc2FtcGxlR2l0aHViJGBHaXRIdWIgdXNlcm5hbWVgLFxuICAgICAgXCIvXCIsXG4gICAgICBzYW1wbGVHaXRodWIkYEdpdEh1YiByZXBvIG5hbWVgKVxuYGBgIn0= -->
+<pre class="r"><code>library(readr)
+githubData &lt;- read_csv(&quot;https://raw.githubusercontent.com/tpemartin/github-data/master/githubData.csv&quot;)
+githubData[c(2,3,4),] -&gt; sampleGithub
+str_c(sampleGithub$`GitHub username`,
+      sampleGithub$`GitHub repo name`)
+str_c(&quot;https://github.com/&quot;,
+      sampleGithub$`GitHub username`,
+      &quot;/&quot;,
+      sampleGithub$`GitHub repo name`)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>練習3</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShyZWFkcilcbmZpbG1Wb3RpbmdEYXRhIDwtIHJlYWRfY3N2KFwiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL3RwZW1hcnRpbi9jb3Vyc2UtMTA3LTEtcHJvZ3JhbW1pbmctZm9yLWRhdGEtc2NpZW5jZS9tYXN0ZXIvZGF0YS8lRTclQUMlQUMlRTQlQjglODklRTUlQjElODYlRTclQjYlOTMlRTYlQkYlOUYlRTYlOTIlQUQlRTUlQUUlQTIlRTclQUIlQjYlRTglQjMlQkQlRTUlOEYlODMlRTglQjMlQkQlRTQlQkQlOUMlRTUlOTMlODElRTYlOEElOTUlRTclQTUlQTglRTclQjUlOTAlRTYlOUUlOUMlRTYlQTglQTMlRTYlOUMlQUMlMjAtJTIwU2hlZXQxLmNzdlwiKVxuYGBgIn0= -->
+<pre class="r"><code>library(readr)
+filmVotingData &lt;- read_csv(&quot;https://raw.githubusercontent.com/tpemartin/course-107-1-programming-for-data-science/master/data/%E7%AC%AC%E4%B8%89%E5%B1%86%E7%B6%93%E6%BF%9F%E6%92%AD%E5%AE%A2%E7%AB%B6%E8%B3%BD%E5%8F%83%E8%B3%BD%E4%BD%9C%E5%93%81%E6%8A%95%E7%A5%A8%E7%B5%90%E6%9E%9C%E6%A8%A3%E6%9C%AC%20-%20Sheet1.csv&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<ul>
+<li>split</li>
+</ul>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuP3N0cl9zcGxpdF9maXhlZFxuZnJ1aXRzIDwtIGMoXG4gIFwiYXBwbGVzIGFuZCBvcmFuZ2VzIGFuZCBwZWFycyBhbmQgYmFuYW5hc1wiLFxuICBcInBpbmVhcHBsZXMgYW5kIG1hbmdvcyBhbmQgZ3VhdmFzXCJcbilcblxuc3RyX3NwbGl0KGZydWl0cywgXCIgYW5kIFwiKVxuc3RyX3NwbGl0KGZydWl0cywgXCIgYW5kIFwiLCBzaW1wbGlmeSA9IFRSVUUpXG5gYGAifQ== -->
+<pre class="r"><code>?str_split_fixed
+fruits &lt;- c(
+  &quot;apples and oranges and pears and bananas&quot;,
+  &quot;pineapples and mangos and guavas&quot;
+)
+
+str_split(fruits, &quot; and &quot;)
+str_split(fruits, &quot; and &quot;, simplify = TRUE)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Q A. 請在filmVotingData創造出單純「西元年」變數。 B. 每位投票者最多可選兩部喜歡的影片(有人只選一部)，請問你如何計算每部影片有多少人選？</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3RyX3NwbGl0X2ZpeGVkKGZpbG1Wb3RpbmdEYXRhJOiri+mBuOaTh+S9oOacgOWWnOatoeeahOW9seeJh+S6jOmDqCxcIixcIiwzKS0+IHZvdGVzXG5kaW0odm90ZXMpXG5cblxuYGBgIn0= -->
+<pre class="r"><code>str_split_fixed(filmVotingData$請選擇你最喜歡的影片二部,&quot;,&quot;,3)-&gt; votes
+dim(votes)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
 </div>
+</div>
+<div id="taiwan-date-time" class="section level1">
+<h1>4.7 Taiwan date-time</h1>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxu5rCR5ZyL5bm05pyIPC1jKFwiMDk5LzAxXCIsXCIwOTkvMDJcIixcIjA5OS8wM1wiKVxuYGBgIn0= -->
+<pre class="r"><code>民國年月&lt;-c(&quot;099/01&quot;,&quot;099/02&quot;,&quot;099/03&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIjIwMTgtMTAtMDMiDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQoNCmBgYHtyfQ0KbGlicmFyeShkcGx5cikNCmxpYnJhcnkobHVicmlkYXRlKQ0KYSA8LSB5bWQoIjIwMTctMDEtMzEiKSANCmIgPC0geW1kX2htcygiMjAxNy0wMS0zMSAyMDoxMTo1OSIpDQpgYGANCg0KIyA0LjYgT3BlcmF0aW9uIG9uIFN0cmluZ3MNCg0KIyMgU3Vic2V0DQoNClEgVXNlID4gP3N0cl9zdWIoKSB0byBnZXQgdGhlIGZ1bmN0aW9uIGhlbHAuIEFuZCBydW4gZXhhbXBsZXMgaW4gYSBjb2RlIGNodW5rLg0KYGBge3J9DQpsaWJyYXJ5KHN0cmluZ3IpDQo/c3RyX3N1YigpDQpodyA8LSAiSGFkbGV5IFdpY2toYW0iDQoNCnN0cl9zdWIoaHcsIDEsIDYpDQpzdHJfc3ViKGh3LCBlbmQgPSA2KQ0Kc3RyX3N1YihodywgOCwgMTQpDQpzdHJfc3ViKGh3LCA4KQ0Kc3RyX3N1YihodywgYygxLCA4KSwgYyg2LCAxNCkpDQoNCmBgYA0K6LOH5paZ77ya5a2455Sf5a246JmfDQpgYGB7cn0NCmxpYnJhcnkocmVhZHIpDQpzdHVkZW50SUQgPC0gcmVhZF9jc3YoImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS90cGVtYXJ0aW4vZ2l0aHViLWRhdGEvbWFzdGVyL3N0dWRlbnRJRC5jc3YiKQ0KYGBgDQpRIOWIqeeUqHN0cl9zdWIoKeWPluWHuuavj+S9jeWtuOeUn+ezu+WIpeOAgg0KYGBge3J9DQpzdHJfc3ViKCkNCmBgYA0KDQotIEpvaW4vU3BsaXQNCnN0cl9jKCksc3RyX3NwbGl0X2ZpeGVkKCkNCg0KVXNlID4gP3N0cl9jKCkgdG8gZ2V0IHRoZSBmdW5jdGlvbiBoZWxwLg0K57e057+SMQ0KYGBge3J9DQpzdHJfYyhsZXR0ZXJzLExFVFRFUlMpDQpzdHJfYyhsZXR0ZXJzLExFVFRFUlMsc2VwPSItIikNCnN0cl9jKCJsb3dlcmNhc2U6ICIsIGxldHRlcnMsICIsIGNhcGl0YWw6ICIsIExFVFRFUlMpDQpgYGA=</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIjIwMTgtMTAtMDMiDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQoNCmBgYHtyfQ0KbGlicmFyeShkcGx5cikNCmxpYnJhcnkobHVicmlkYXRlKQ0KYSA8LSB5bWQoIjIwMTctMDEtMzEiKSANCmIgPC0geW1kX2htcygiMjAxNy0wMS0zMSAyMDoxMTo1OSIpDQpgYGANCg0KIyA0LjYgT3BlcmF0aW9uIG9uIFN0cmluZ3MNCg0KIyMgU3Vic2V0DQoNClEgVXNlID4gP3N0cl9zdWIoKSB0byBnZXQgdGhlIGZ1bmN0aW9uIGhlbHAuIEFuZCBydW4gZXhhbXBsZXMgaW4gYSBjb2RlIGNodW5rLg0KYGBge3J9DQpsaWJyYXJ5KHN0cmluZ3IpDQo/c3RyX3N1YigpDQpodyA8LSAiSGFkbGV5IFdpY2toYW0iDQoNCnN0cl9zdWIoaHcsIDEsIDYpDQpzdHJfc3ViKGh3LCBlbmQgPSA2KQ0Kc3RyX3N1YihodywgOCwgMTQpDQpzdHJfc3ViKGh3LCA4KQ0Kc3RyX3N1YihodywgYygxLCA4KSwgYyg2LCAxNCkpDQoNCmBgYA0K6LOH5paZ77ya5a2455Sf5a246JmfDQpgYGB7cn0NCmxpYnJhcnkocmVhZHIpDQpzdHVkZW50SUQgPC0gcmVhZF9jc3YoImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS90cGVtYXJ0aW4vZ2l0aHViLWRhdGEvbWFzdGVyL3N0dWRlbnRJRC5jc3YiKQ0KYGBgDQpRIOWIqeeUqHN0cl9zdWIoKeWPluWHuuavj+S9jeWtuOeUn+ezu+WIpeOAgg0KYGBge3J9DQo/c3RyX3N1YigpDQpzdHJfc3ViKOWtuOiZnywgZnJvbT0gNSwgdG8gPSA2KQ0KYGBgDQoNCi0gSm9pbi9TcGxpdA0Kc3RyX2MoKSxzdHJfc3BsaXRfZml4ZWQoKQ0KDQpVc2UgPiA/c3RyX2MoKSB0byBnZXQgdGhlIGZ1bmN0aW9uIGhlbHAuDQrnt7Tnv5IxDQpgYGB7cn0NCj9zdHJfYw0Kc3RyX2MobGV0dGVycyxMRVRURVJTKQ0Kc3RyX2MobGV0dGVycyxMRVRURVJTLHNlcD0iLSIpDQpzdHJfYygibG93ZXJjYXNlOiAiLCBsZXR0ZXJzLCAiLCBjYXBpdGFsOiAiLCBMRVRURVJTKQ0KYGBgDQpsZXR0ZXIgDQpMRVRURVJTIA0K57e057+SMg0KYGBge3J9DQpsaWJyYXJ5KHJlYWRyKQ0KZ2l0aHViRGF0YSA8LSByZWFkX2NzdigiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL3RwZW1hcnRpbi9naXRodWItZGF0YS9tYXN0ZXIvZ2l0aHViRGF0YS5jc3YiKQ0KZ2l0aHViRGF0YVtjKDIsMyw0KSxdIC0+IHNhbXBsZUdpdGh1Yg0Kc3RyX2Moc2FtcGxlR2l0aHViJGBHaXRIdWIgdXNlcm5hbWVgLA0KICAgICAgc2FtcGxlR2l0aHViJGBHaXRIdWIgcmVwbyBuYW1lYCkNCnN0cl9jKCJodHRwczovL2dpdGh1Yi5jb20vIiwNCiAgICAgIHNhbXBsZUdpdGh1YiRgR2l0SHViIHVzZXJuYW1lYCwNCiAgICAgICIvIiwNCiAgICAgIHNhbXBsZUdpdGh1YiRgR2l0SHViIHJlcG8gbmFtZWApDQpgYGANCue3tOe/kjMNCmBgYHtyfQ0KbGlicmFyeShyZWFkcikNCmZpbG1Wb3RpbmdEYXRhIDwtIHJlYWRfY3N2KCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vdHBlbWFydGluL2NvdXJzZS0xMDctMS1wcm9ncmFtbWluZy1mb3ItZGF0YS1zY2llbmNlL21hc3Rlci9kYXRhLyVFNyVBQyVBQyVFNCVCOCU4OSVFNSVCMSU4NiVFNyVCNiU5MyVFNiVCRiU5RiVFNiU5MiVBRCVFNSVBRSVBMiVFNyVBQiVCNiVFOCVCMyVCRCVFNSU4RiU4MyVFOCVCMyVCRCVFNCVCRCU5QyVFNSU5MyU4MSVFNiU4QSU5NSVFNyVBNSVBOCVFNyVCNSU5MCVFNiU5RSU5QyVFNiVBOCVBMyVFNiU5QyVBQyUyMC0lMjBTaGVldDEuY3N2IikNCmBgYA0KLSBzcGxpdA0KYGBge3J9DQo/c3RyX3NwbGl0X2ZpeGVkDQpmcnVpdHMgPC0gYygNCiAgImFwcGxlcyBhbmQgb3JhbmdlcyBhbmQgcGVhcnMgYW5kIGJhbmFuYXMiLA0KICAicGluZWFwcGxlcyBhbmQgbWFuZ29zIGFuZCBndWF2YXMiDQopDQoNCnN0cl9zcGxpdChmcnVpdHMsICIgYW5kICIpDQpzdHJfc3BsaXQoZnJ1aXRzLCAiIGFuZCAiLCBzaW1wbGlmeSA9IFRSVUUpDQpgYGANCg0KUSANCkEuIOiri+WcqGZpbG1Wb3RpbmdEYXRh5Ym16YCg5Ye65Zau57SU44CM6KW/5YWD5bm044CN6K6K5pW444CCDQpCLiDmr4/kvY3mipXnpajogIXmnIDlpJrlj6/pgbjlhanpg6jllpzmraHnmoTlvbHniYco5pyJ5Lq65Y+q6YG45LiA6YOoKe+8jOiri+WVj+S9oOWmguS9leioiOeul+avj+mDqOW9seeJh+acieWkmuWwkeS6uumBuO+8nw0KYGBge3J9DQpzdHJfc3BsaXRfZml4ZWQoZmlsbVZvdGluZ0RhdGEk6KuL6YG45pOH5L2g5pyA5Zac5q2h55qE5b2x54mH5LqM6YOoLCIsIiwzKS0+IHZvdGVzDQpkaW0odm90ZXMpDQoNCg0KYGBgDQojNC43IFRhaXdhbiBkYXRlLXRpbWUNCmBgYHtyfQ0K5rCR5ZyL5bm05pyIPC1jKCIwOTkvMDEiLCIwOTkvMDIiLCIwOTkvMDMiKQ0KYGBg</div>
 
 
 
