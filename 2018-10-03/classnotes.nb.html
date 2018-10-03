@@ -237,11 +237,30 @@ studentID &lt;- read_csv(&quot;https://raw.githubusercontent.com/tpemartin/githu
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+<p>Q 利用str_sub()取出每位學生系別。</p>
 <!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3RyX3N1YigpXG5gYGAifQ== -->
+<pre class="r"><code>str_sub()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<ul>
+<li>Join/Split str_c(),str_split_fixed()</li>
+</ul>
+<p>Use &gt; ?str_c() to get the function help. 練習1</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3RyX2MobGV0dGVycyxMRVRURVJTKVxuc3RyX2MobGV0dGVycyxMRVRURVJTLHNlcD1cIi1cIilcbnN0cl9jKFwibG93ZXJjYXNlOiBcIiwgbGV0dGVycywgXCIsIGNhcGl0YWw6IFwiLCBMRVRURVJTKVxuYGBgIn0= -->
+<pre class="r"><code>str_c(letters,LETTERS)
+str_c(letters,LETTERS,sep=&quot;-&quot;)
+str_c(&quot;lowercase: &quot;, letters, &quot;, capital: &quot;, LETTERS)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
 </div>
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIjIwMTgtMTAtMDMiDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQoNCmBgYHtyfQ0KbGlicmFyeShkcGx5cikNCmxpYnJhcnkobHVicmlkYXRlKQ0KYSA8LSB5bWQoIjIwMTctMDEtMzEiKSANCmIgPC0geW1kX2htcygiMjAxNy0wMS0zMSAyMDoxMTo1OSIpDQpgYGANCg0KIyA0LjYgT3BlcmF0aW9uIG9uIFN0cmluZ3MNCg0KIyMgU3Vic2V0DQoNClEgVXNlID4gP3N0cl9zdWIoKSB0byBnZXQgdGhlIGZ1bmN0aW9uIGhlbHAuIEFuZCBydW4gZXhhbXBsZXMgaW4gYSBjb2RlIGNodW5rLg0KYGBge3J9DQpsaWJyYXJ5KHN0cmluZ3IpDQo/c3RyX3N1YigpDQpodyA8LSAiSGFkbGV5IFdpY2toYW0iDQoNCnN0cl9zdWIoaHcsIDEsIDYpDQpzdHJfc3ViKGh3LCBlbmQgPSA2KQ0Kc3RyX3N1YihodywgOCwgMTQpDQpzdHJfc3ViKGh3LCA4KQ0Kc3RyX3N1YihodywgYygxLCA4KSwgYyg2LCAxNCkpDQoNCmBgYA0K6LOH5paZ77ya5a2455Sf5a246JmfDQpgYGB7cn0NCmxpYnJhcnkocmVhZHIpDQpzdHVkZW50SUQgPC0gcmVhZF9jc3YoImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS90cGVtYXJ0aW4vZ2l0aHViLWRhdGEvbWFzdGVyL3N0dWRlbnRJRC5jc3YiKQ0KYGBgDQoNCg==</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIjIwMTgtMTAtMDMiDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQoNCmBgYHtyfQ0KbGlicmFyeShkcGx5cikNCmxpYnJhcnkobHVicmlkYXRlKQ0KYSA8LSB5bWQoIjIwMTctMDEtMzEiKSANCmIgPC0geW1kX2htcygiMjAxNy0wMS0zMSAyMDoxMTo1OSIpDQpgYGANCg0KIyA0LjYgT3BlcmF0aW9uIG9uIFN0cmluZ3MNCg0KIyMgU3Vic2V0DQoNClEgVXNlID4gP3N0cl9zdWIoKSB0byBnZXQgdGhlIGZ1bmN0aW9uIGhlbHAuIEFuZCBydW4gZXhhbXBsZXMgaW4gYSBjb2RlIGNodW5rLg0KYGBge3J9DQpsaWJyYXJ5KHN0cmluZ3IpDQo/c3RyX3N1YigpDQpodyA8LSAiSGFkbGV5IFdpY2toYW0iDQoNCnN0cl9zdWIoaHcsIDEsIDYpDQpzdHJfc3ViKGh3LCBlbmQgPSA2KQ0Kc3RyX3N1YihodywgOCwgMTQpDQpzdHJfc3ViKGh3LCA4KQ0Kc3RyX3N1YihodywgYygxLCA4KSwgYyg2LCAxNCkpDQoNCmBgYA0K6LOH5paZ77ya5a2455Sf5a246JmfDQpgYGB7cn0NCmxpYnJhcnkocmVhZHIpDQpzdHVkZW50SUQgPC0gcmVhZF9jc3YoImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS90cGVtYXJ0aW4vZ2l0aHViLWRhdGEvbWFzdGVyL3N0dWRlbnRJRC5jc3YiKQ0KYGBgDQpRIOWIqeeUqHN0cl9zdWIoKeWPluWHuuavj+S9jeWtuOeUn+ezu+WIpeOAgg0KYGBge3J9DQpzdHJfc3ViKCkNCmBgYA0KDQotIEpvaW4vU3BsaXQNCnN0cl9jKCksc3RyX3NwbGl0X2ZpeGVkKCkNCg0KVXNlID4gP3N0cl9jKCkgdG8gZ2V0IHRoZSBmdW5jdGlvbiBoZWxwLg0K57e057+SMQ0KYGBge3J9DQpzdHJfYyhsZXR0ZXJzLExFVFRFUlMpDQpzdHJfYyhsZXR0ZXJzLExFVFRFUlMsc2VwPSItIikNCnN0cl9jKCJsb3dlcmNhc2U6ICIsIGxldHRlcnMsICIsIGNhcGl0YWw6ICIsIExFVFRFUlMpDQpgYGA=</div>
 
 
 

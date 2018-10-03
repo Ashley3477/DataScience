@@ -33,4 +33,18 @@ str_sub(hw, c(1, 8), c(6, 14))
 library(readr)
 studentID <- read_csv("https://raw.githubusercontent.com/tpemartin/github-data/master/studentID.csv")
 ```
+Q 利用str_sub()取出每位學生系別。
+```{r}
+str_sub()
+```
 
+- Join/Split
+str_c(),str_split_fixed()
+
+Use > ?str_c() to get the function help.
+練習1
+```{r}
+str_c(letters,LETTERS)
+str_c(letters,LETTERS,sep="-")
+str_c("lowercase: ", letters, ", capital: ", LETTERS)
+```
