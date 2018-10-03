@@ -36,7 +36,7 @@ studentID <- read_csv("https://raw.githubusercontent.com/tpemartin/github-data/m
 Q 利用str_sub()取出每位學生系別。
 ```{r}
 ?str_sub()
-str_sub(學號, from= 5, to = 6)
+str_sub(studentID$學號, from= 5, to = 6)
 ```
 
 - Join/Split
@@ -56,7 +56,7 @@ LETTERS
 ```{r}
 library(readr)
 githubData <- read_csv("https://raw.githubusercontent.com/tpemartin/github-data/master/githubData.csv")
-githubData[c(2,3,4),] -> sampleGithub
+githubData[c(2,3,4,25),] -> sampleGithub
 str_c(sampleGithub$`GitHub username`,
       sampleGithub$`GitHub repo name`)
 str_c("https://github.com/",
@@ -94,3 +94,5 @@ dim(votes)
 ```{r}
 民國年月<-c("099/01","099/02","099/03")
 ```
+Q 將上述資料轉成西元年月格式（民國年+1911即為西元年）的date class。你的程式設計策略為何？
+(hint: date class的變數可以用+years(k)把西元年增加k年。同學也可以查查lubridate::years()用法)
