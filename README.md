@@ -27,3 +27,13 @@ avector<- c(1999,2067,3999,7788)
 - At home:
   1. organized the classnotes
   2. practice the exercises
+
+# Week4_2018-10-03
+- Operation on Strings
+  1. subset
+  2. Join / split
+- Date & Time
+- At home:
+  1. 
+  2. 
+  
