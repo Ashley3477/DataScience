@@ -1,0 +1,63 @@
+---
+title: "2018-10-08exercise2"
+output: html_notebook
+---
+#Question 1
+請將西元年(Year)轉成民國年份
+(舉例：2018 -> 107)
+步驟一：
+目前Year的資料型態為character，請利用as.integer函數將其轉變成integer型態，才能去做數學運算
+步驟二：
+減去1911
+
+```{r}
+library(readr)
+library(stringr)
+library(lubridate)
+TyphoonData <- read_csv("https://raw.githubusercontent.com/GaryLKL/course-programming-for-ds-Quiz/master/TyphoonData.csv", col_types = cols(.default = col_character()))
+Year <- TyphoonData$年份
+#step 1
+Year <- as.integer(Year)
+#step 2
+Year <- Year - 1911
+```
+#Question 2
+承上題，假設你已經將Year轉成民國年份。
+請先將Year的資料型態轉變回character，並在時間的前後加上『民國』、『年』
+(舉例：107 -> 民國107年)
+步驟一：
+使用as.character函數，將Year的資料型態轉回character
+步驟二：
+使用stringr套件中的str_c函數，合併『民國』、『Year』、『年』
+
+```{r}
+library(readr)
+library(stringr)
+library(lubridate)
+TyphoonData <- read_csv("https://raw.githubusercontent.com/GaryLKL/course-programming-for-ds-Quiz/master/TyphoonData.csv", col_types = cols(.default = col_character()))
+Year <- TyphoonData$年份
+Year <- as.integer(Year) - 1911
+#step 1
+Year <- as.character(Year)
+#step 2
+Year <- str_c("民國", Year, "年")
+
+```
+#Question 3
+請問哪一個月發布颱風警報的頻率最高?
+(變數Time為發布警報的時間)
+步驟一：
+請用stringr套件的str_sub函數提出月份（第6、7位數字）
+步驟二：
+再用table函數計算各月份的颱風警報頻率
+
+```{r}
+library(readr)
+library(stringr)
+TyphoonData <- read_csv("https://raw.githubusercontent.com/GaryLKL/course-programming-for-ds-Quiz/master/TyphoonData.csv", col_types = cols(.default = col_character()))
+Time <- TyphoonData$發布警報時間
+library(stringr)
+a <- c("1958-07-13 12:00", "1958-07-05 00:00", "1959-09-11 09:00")
+b <- str_sub(a, start = 6, end = 7)
+table(b)
+```
