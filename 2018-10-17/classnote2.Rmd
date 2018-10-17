@@ -1,0 +1,18 @@
+---
+title: "2018-10-17"
+output: html_notebook
+---
+- 遇到問題
+```{r}
+library(str_split_fixed)
+a <- c("A, B","B, C")
+a
+str_split_fixed(a,",", n=3)->b
+table(b)
+b
+```
+- 登入google account
+```{r}
+library(googlesheets)
+gs_auth(new_user = TRUE)
+```
