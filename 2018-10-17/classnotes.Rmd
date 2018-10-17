@@ -1,0 +1,13 @@
+---
+title: "2018-10-17"
+output: html_notebook
+---
+遇到問題
+```{r}
+install.packages("str_split_fixed")
+a <- c("A, B","B, C")
+a
+str_split_fixed(a,",", n=3)->b
+table(b)
+b
+```
