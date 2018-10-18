@@ -16,6 +16,8 @@ iPeenData <- read_csv("https://raw.githubusercontent.com/tpemartin/course-107-1-
 ```
 
 ```{r ans1}
+?str_sub()
+str_sub()
 ```
 
 ## 2 

@@ -28,8 +28,8 @@ as.factor(bankdata$銀行) -> bankdata$銀行
 ```{r ans12}
 library(dplyr)
 library(lubridate)
-西元年月 <- ymd(bankdata$年月)+1911
-
+ymd(bankdata$年月)
+?ymd
 ```
 
 ## 2
