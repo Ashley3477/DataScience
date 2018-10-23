@@ -23,7 +23,7 @@ library(dplyr)
 library(magrittr)
 bankdata$銀行<-as.factor(bankdata$銀行)
 ```
-```{r}
+```{r eval=FALSE, include=FALSE}
 library(dplyr)
 library(lubridate)
 x<-c("099-01","099-02","099-03")
@@ -45,7 +45,7 @@ library(lubridate)
 ?str_c
 str_c("1",bankdata$年月,"/01")->民國年月
 ymd(民國年月)->民國年月
-str_c(民國年月 + years(911))->西元年月
+str_c(民國年月 + years(911))->西元年月日
 
 format(as.POSIXct(西元年月日),format="%Y/%m")->西元年月
 
@@ -59,15 +59,17 @@ Google天災地圖會發佈天災時地資訊，如[潭美颱風(Typhoon Trami)]
 ```{r}
 grep("Taipei",OlsonNames(),value=TRUE)
 ??with_tz
-
+?ymd_hm
 ```
 ```{r ans2}
-?ymd_hm
-library(dplyr)
-library(stringr)
 library(lubridate)
-台灣時間 <- ymd_hm("2018/30/09 00:00 UTC", tzone = "Asia/Taipei")
-with_tz(台灣時間, "GMT")
+
+a <- c("2018/30/09 00:00 UTC")
+
+台灣時間 <- ydm_hm(a)
+
+台灣時間 <-with_tz(t,"Asia/Taipei")
+
 台灣時間
 ```
 
