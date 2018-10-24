@@ -83,6 +83,50 @@ but not True, true, TRue, False, false, FAlse, etc.
 apply sum() gives you the total number of TRUEs.
 
 Q Reproduce StuDF[1,] and StuDF[c(1,4),c(2,3)] using T/F method.
-```{r}
-
+```{r eval=FALSE, include=FALSE}
+StuDF[1,]
+StuDF[c(1,4),c(2,3)]
 ```
+# 5.4.4 Relational operators
+< Less than 
+> Greater than 
+<= Less than or equal to 
+>= Greater than or equal to 
+== Equal to 
+!= Not equal to 
+
+- 範例
+“誰的分數大於等於80？” “小新的分數幾分？
+```{r}
+(StuDF$score >= 80)
+(StuDF$name == "小新")
+```
+- 找出StuDF分數大於等於80的人名。
+找出小新的分數。
+```{r}
+which[(StuDF$score >= 80),2]
+which[(StuDF$name == "小新"),3]
+```
+```{r}
+StuDF
+```
+
+- which() return the locations of TRUE elements in a logical vector.
+
+#5.4.5 Logical operators
+Operator Description 
+! Logical NOT 
+& Element-wise logical AND 
+&& Logical AND 
+| Element-wise logical OR 
+|| Logical OR
+
+```{r}
+(classSurvey$性別 == "男")
+
+(classSurvey$本學期學分數 > 20)
+
+(classSurvey$性別 == "男" | 
+    classSurvey$本學期學分數 > 20)
+```
+
