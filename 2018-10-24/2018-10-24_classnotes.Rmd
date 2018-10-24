@@ -128,5 +128,13 @@ Operator Description
 
 (classSurvey$性別 == "男" | 
     classSurvey$本學期學分數 > 20)
+```.
+Q
+找出「性別為男」且「本學期學分數>26」的人名。
+找出住在台北市的人。
+找出住在新北市的人。
+```{r}
+[(classSurvey$性別 =="男"),3] && [(classSurvey$score >26), ]
 ```
+#5.4.6 Object extraction: $ and [ ]
 
