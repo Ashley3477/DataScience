@@ -34,5 +34,5 @@ Keep going!
 - explain fork repository
 - At home:
   1. Homework 1
-  2. E
+  2. Exercise 3
   
