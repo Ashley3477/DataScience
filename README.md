@@ -38,4 +38,10 @@ Keep going!
   2. Exercise 3
 # Week7_2018-10-24
 - explain homework tips.
-- 
+- Data Frame:
+  1. create a data frame
+  2. column/row names
+  3. extract obserations
+  4. relational operators
+  5. logical operator
+  6. object extraction
