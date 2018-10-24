@@ -1,0 +1,88 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+- Import Google Sheets
+```{r}
+library(lubridate)
+library(stringr)
+library(googlesheets)
+```
+- Gain access authorization to your sheets
+
+```{r}
+gs_auth(new_user = TRUE)
+```
+```{r}
+gsSurvey<-gs_key("4/gQBoUAjKBqNMR3yLIBLUi6x52l_1774MydnXIXQarRsM0uTMLIBr6iw")  #download sheet information as an object
+
+classSurvey<-gs_read(gsSurvey,ws=1) #access the 1st worksheet
+```
+```{r}
+#5.4 Data Frame
+class(classSurvey)
+View(classSurvey)
+```
+ -不同column 可以有不同屬性
+ 
+```{r}
+
+StuDF <- data.frame(
+  StuID=c(1,2,3,4,5),
+  name=c("小明","大雄","胖虎","小新","大白"),
+  score=c(80,60,90,70,50)
+  )
+StuDF 
+```
+- name認定為factor(欄位為純文字時容易認定為類別)
+```{r}
+as.character(StuDF$name) ->StuDF$
+```
+- 或是可以直接加stringasfacotr = F
+
+
+#5.4.2 Column/Row names
+ 1. Column names
+```{r}
+names(StuDF) 
+colnames(StuDF)
+```
+- names() is more general than colnames, which can be applied to objects other than data frames.
+
+- 檢查classSurvey的變數名稱。
+ 2. Row names
+```{r}
+rownames(StuDF)
+```
+- 檢查classSurvey的rownames。
+
+#5.4.3 Extract observations: numerical/logical index
+
+ 1. by matrix index
+```{r}
+StuDF[1,2]
+StuDF[,2]
+StuDF[1,]
+StuDF[c(1,4),]
+StuDF[c(1,4),c(2,3)]
+```
+- Compare the following two
+```{r}
+StuDF[c(1,4),]
+StuDF[-c(1,4),]
+```
+- 請使用matrix index來產生head(classSurvey)的結果。
+2. by TRUE/FALSE
+```{r}
+StuDF[c(T,F,F,F,F),c(F,T,F)]
+StuDF[c(T,F,F,T,F),]
+```
+- T代表要選近來/F代表不要
+but not True, true, TRue, False, false, FAlse, etc.
+- 1:yes, 0:no
+apply sum() gives you the total number of TRUEs.
+
+Q Reproduce StuDF[1,] and StuDF[c(1,4),c(2,3)] using T/F method.
+```{r}
+
+```
