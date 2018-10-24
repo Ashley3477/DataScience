@@ -32,5 +32,7 @@ Keep going!
   1. Exercise 2
 # Week6_2018-10-17
 - explain fork repository
-- 
+- At home:
+  1. Homework 1
+  2. E
   
