@@ -32,7 +32,10 @@ Keep going!
   1. Exercise 2
 # Week6_2018-10-17
 - explain fork repository
+- Google G Suite
 - At home:
   1. Homework 1
   2. Exercise 3
-  
+# Week7_2018-10-24
+- explain homework tips.
+- 
