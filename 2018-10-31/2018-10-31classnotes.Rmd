@@ -1,0 +1,72 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+#5.4.7 Generic replacement
+
+```{r}
+names(gsSurvey)
+
+
+```
+
+```{r}
+gsSurvey$links$type
+
+```
+有四個元素可以選
+。
+
+```{r}
+names(StuDF)
+```
+覺得名稱不直覺的話，可以用names(x)<- ...來取代其本元素名稱。
+```{r}
+names(StuDF) <- c("學號","姓名","成績")
+names(StuDF)
+```
+用箭頭直接更改某一欄名稱
+```{r}
+names(StuDF)
+```
+
+
+
+
+範例
+```{r}
+library(readr)
+student <- read_csv("https://raw.githubusercontent.com/tpemartin/course-107-1-programming-for-data-science/master/data/student.csv")
+library(dplyr)
+library(magrittr)
+student %<>% mutate(
+  身高級距=cut(身高,c(0,150,155,160,165,170,175,180,185,200)))
+
+```
+
+ - levels()
+  1. 顯示factor物件的類別
+  2. 進行generic replacement
+  
+ --Q
+ 請把身高級距改成“小個子”,“中等個子”,“高個子”三類，其中 170公分以下的都稱為“小個子”，170-180為“中等個子”，180以上為“高個子”。
+ 
+```{r}
+ 
+ levels(student$身高級距)
+ 
+```
+
+```{r}
+levels(student$身高級距)[c(1,5)]<- c("小個子","小個子","小個子","小個子","小個子","中等個子","中等個子","高個子","高個子")
+
+```
+
+```{r}
+library(readr)
+student <- read_csv("https://raw.githubusercontent.com/tpemartin/course-107-1-programming-for-data-science/master/data/student.csv")
+library(dplyr)
+library(magrittr)
+student %<>% mutate(
+  身高級距=cut(身高,c(0,150,155,160,165,170,175,180,185,200)))
+```
