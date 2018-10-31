@@ -1,0 +1,188 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+#5.4.7 Generic replacement
+
+```{r}
+names(gsSurvey)
+
+
+```
+
+```{r}
+gsSurvey$links$type
+
+```
+有四個元素可以選
+。
+
+```{r}
+names(StuDF)
+```
+覺得名稱不直覺的話，可以用names(x)<- ...來取代其本元素名稱。
+```{r}
+names(StuDF) <- c("學號","姓名","成績")
+names(StuDF)
+```
+用箭頭直接更改某一欄名稱
+```{r}
+names(StuDF)
+```
+
+
+
+
+範例
+```{r}
+library(readr)
+student <- read_csv("https://raw.githubusercontent.com/tpemartin/course-107-1-programming-for-data-science/master/data/student.csv")
+library(dplyr)
+library(magrittr)
+student %<>% mutate(
+  身高級距=cut(身高,c(0,150,155,160,165,170,175,180,185,200)))
+
+```
+
+ - levels()
+  1. 顯示factor物件的類別
+  2. 進行generic replacement
+  
+ --Q
+ 請把身高級距改成“小個子”,“中等個子”,“高個子”三類，其中 170公分以下的都稱為“小個子”，170-180為“中等個子”，180以上為“高個子”。
+ 
+```{r}
+ 
+ levels(student$身高級距)
+ 
+```
+
+```{r}
+levels(student$身高級距)[c(1,5)]<- c("小個子","小個子","小個子","小個子","小個子","中等個子","中等個子","高個子","高個子")
+
+```
+ - 經由$與[]取出的元素均可進行原生值替換。
+
+####
+```{r}
+StuDF$成績[c(4)]
+StuDF$成績[c(4)] <- 75
+```
+若只要改變一部份的原生屬性，可以用$或[]來選出原生屬性值的位置再替換，如：
+```{r}
+library(readr)
+student <- read_csv("https://raw.githubusercontent.com/tpemartin/course-107-1-programming-for-data-science/master/data/student.csv")
+library(dplyr)
+library(magrittr)
+student %<>% mutate(
+  身高級距=cut(身高,c(0,150,155,160,165,170,175,180,185,200)))
+```
+```{r}
+levels(student$身高級距)[c(1:3)]<-c("(0,160]")
+levels(student$身高級距)
+```
+請善用levels()及[]元素選取，讓新身高級距(0,160]為最小級距（即把原生的三個級距值,(0,150],(150,155],(155,160],合併成一類。
+
+
+```{r}
+
+library(googlesheets)
+
+#gs_auth(new_user = TRUE)
+
+gsSurvey<-gs_key("1mC9bnxj11NCNoOCw0Vmn4nxERbHtLjeGo9v9C9b2GDE")  #download sheet information as an object
+
+classSurvey<-gs_read(gsSurvey,ws=1) #access the 1st worksheet
+
+```
+
+
+
+1.1 使用dim()查詢classSurvey有多少觀察值？有多少變數？(前者也可以用nrow(), 後者也可以用ncol())
+
+```{r}
+
+dim(classSurvey)
+
+nrow(classSurvey)
+
+ncol(classSurvey)
+
+```
+
+
+
+1.2 新增一個變數叫年級，它必需是個factor，且有四個levels：大一，大二，大三，大四及以上。(hint: 取出適當的學號碼，透過as.factor(),levels()來達成。)
+
+```{r}
+
+class(classSurvey$學號)
+
+# 學號轉成character
+classSurvey$學號 <- as.character(classSurvey$學號)
+
+
+# 學號取出字串第2-4位 存成 年級
+library(stringr)
+classSurvey$年級 <- str_sub(classSurvey$學號,2,4)
+
+
+# 年級 轉 factor
+classSurvey$年級 <- as.factor(classSurvey$年級)
+
+
+# 年級進行 generic replacement
+levels(classSurvey$年級) <- c("大四及以上","大三","大二","大一")
+
+
+```
+```{r}
+
+classSurvey$年級
+
+```
+
+
+
+
+
+1.3 各年級有多少人？
+
+```{r}
+
+
+
+```
+
+
+
+1.4 在課堂調查的classSurvey裡大二（含）以上的人有多少比例為男性？ （hint: length()可計算vector（如一個變數）有多少元素，dim()計算矩陣或data frame有多少個row(即觀測值個數)及多少個column(即變數數目)）
+
+```{r}
+
+
+
+```
+
+1.5 大一的男性比例又有多少呢？
+```{r}
+
+
+
+```
+1.6 學生參加最多的課外活動是什麼？請適當利用table()呈現。
+
+```{r}
+
+
+
+```
+
+1.7 學生來自的縣市分佈如何？請適當利用table()呈現。
+
+``{r}
+
+
+
+```
+
