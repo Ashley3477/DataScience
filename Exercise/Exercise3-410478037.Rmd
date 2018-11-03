@@ -47,10 +47,10 @@ classData<-gs_read(gsLMSHabit,ws="公告與練習") #access the 1st worksheet
 ````
 
 ```{r ans11}
-as.factor(classData$`公-10-06`) -> classData$`公-10-06`
+
 classData$`公-10-06`<- replace(classData$`公-10-06`,which(classData$`公-10-06` == 1),"有看公告")
 classData$`公-10-06`<- replace(classData$`公-10-06`,which(classData$`公-10-06` == 0),"沒看公告")
- 
+classData$`公-10-06` <- as.factor(classData$`公-10-06`)
 ```
 
 
@@ -109,17 +109,13 @@ gsLMSHabit<-gs_key("1fWdfu5yvFKtl8bUfXp6bSWdgTCxHiXPAnSW-JSk-IWc")  #download sh
 hwData<-gs_read(gsLMSHabit,ws="作業上傳") 
 
 ```
-
-
-
-
-
 ### 2.1
 
 資料的Timestamp為台灣時間，請將Timestamp變數設定成為Date/Time類型（即POSIXct)且時區是"Asia/Taipei"。（hint: `lubridate::mdy_hms()`）
 
 ```{r ans21}
-
+library(lubridate)
+hwData$Timestamp<-mdy_hms(hwData$Timestamp,tz="Asia/Taipei")
 ```
 ### 2.2
 
@@ -128,7 +124,8 @@ hwData<-gs_read(gsLMSHabit,ws="作業上傳")
 
 
 ```{r ans22}
-
+deadline <- c("2018-10-24 00:00:00")
+deadline<- ymd_hms(deadline,tz="Asia/Taipei")
 ```
 
 
@@ -140,7 +137,7 @@ hwData<-gs_read(gsLMSHabit,ws="作業上傳")
 
 
 ```{r ans23}
-
+hwData$early <- difftime(deadline, hwData$Timestamp,units="days")
 ```
 
 
@@ -152,7 +149,7 @@ hwData<-gs_read(gsLMSHabit,ws="作業上傳")
 
 
 ```{r ans24}
-
+hwData$early <- round(hwData$early,digits = 0)
 ```
 
 
@@ -164,6 +161,7 @@ hwData<-gs_read(gsLMSHabit,ws="作業上傳")
 
 
 ```{r ans25}
-
+?table
+table(which(hwData$early > 0)  %in% which(hwData$作業代碼 == "hw1"))
 ```
 
