@@ -6,7 +6,7 @@ params:
 
   studentName: "彭思凱"
 
-  repoURL: "這個作業的GitHub repo網址（選填）"
+  repoURL: "https://github.com/Ashley3477/DataScience/tree/master/Exercise"
 
 ---
 
