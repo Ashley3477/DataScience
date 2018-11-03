@@ -41,11 +41,16 @@ classData<-gs_read(gsLMSHabit,ws="公告與練習") #access the 1st worksheet
 ### 1.1 元素內容替換
 
 變數「公-10-06」為1代表有看公告，請將classData$`公-10-06`改成factor類型且有看公告的人，他的觀察值為"有看公告"；沒看公告的觀察值為"沒看公告"。
-
-
+```{r}
+?as.factor
+?replace
+````
 
 ```{r ans11}
-
+as.factor(classData$`公-10-06`) -> classData$`公-10-06`
+classData$`公-10-06`<- replace(classData$`公-10-06`,which(classData$`公-10-06` == 1),"有看公告")
+classData$`公-10-06`<- replace(classData$`公-10-06`,which(classData$`公-10-06` == 0),"沒看公告")
+ 
 ```
 
 
@@ -57,7 +62,7 @@ classData<-gs_read(gsLMSHabit,ws="公告與練習") #access the 1st worksheet
 
 
 ```{r ans12}
-
+classData[which(classData$`公-10-06` == "有看公告"),]
 ```
 ### 1.3
 
@@ -71,7 +76,10 @@ classData<-gs_read(gsLMSHabit,ws="公告與練習") #access the 1st worksheet
 
 ```{r ans13}
 
-```
+a <- sum(classData$`練2018-10-17-1` == 1 && classData$`公-10-06`=="有看公告") 
+b <- sum(classData$`公-10-06`=="有看公告")
+a/b
+``` 
 
 
 
@@ -80,9 +88,10 @@ classData<-gs_read(gsLMSHabit,ws="公告與練習") #access the 1st worksheet
 在「沒看公告」的人裡，有多少比例在2018-10-17有commit-push記錄（即值為1）。
 
 
-
 ```{r ans14}
-
+a <- sum(classData$`練2018-10-17-1` == 1 && classData$`公-10-06`=="沒看公告") 
+b <- sum(classData$`公-10-06`=="沒看公告")
+a/b
 ```
 
 
