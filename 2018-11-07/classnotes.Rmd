@@ -1,0 +1,231 @@
+---
+title: "2018-11-07classnotes"
+output: html_notebook
+---
+Append “1” to the front of 民國年月, and “/01” to the back of 民國年月。
+Given updated 民國年月, use lubridate::ymd() to convert it to a Date(POSIXct) object.
+Add 911 years to the step 2 object (using lubridate::years()).
+```{r}
+library(stringr)
+library(lubridate)
+民國年月<-c("099/01","099/02","099/03")
+
+# 1
+str_c("1",民國年月,"/01")->民國年月
+
+# 2
+lubridate::ymd(民國年月) -> 民國年月
+
+# 3
+民國年月 + years(911)
+```
+
+lubradate::ymd
+把class改成DATE的CLASS
+
+%>% pipe operator:
+1. 預設：%>% 把它左邊（LHS）的物件流入它右邊（RHS）函數的argument第一個位置。 )
+2. 若要流入右邊函數的「非」第一位置argument，則用.在右邊函數中標示。
+3. %>% 可進行串接，則下一個%>%會以上個函數輸出結果當做新的LHS物件。
+4. 若右側是一串運算，而非函數，則用{...}把右側運算括住，並把LHS物件要出現的位置用.取代。
+
+
+
+
+範例資料
+政府開放平台:106學年大專院校校別學生數
+
+```{r}
+library(readr)
+collegeData <- read_csv("https://quality.data.gov.tw/dq_download_csv.php?nid=6231&md5_url=dda8fca407131483c1d8cbf3d61cf793")
+```
+```{r}
+
+collegeData$學校名稱 <-
+
+  as.factor(collegeData$學校名稱)
+
+collegeData$`日間∕進修別`<-
+
+  as.factor(collegeData$`日間∕進修別`)
+
+```
+
+
+
+```{r}
+
+library(dplyr)
+
+mutate(
+
+  collegeData,
+
+  學校代碼=as.factor(學校代碼),
+
+  學校名稱=as.factor(學校名稱)
+
+  ) -> collegeData2
+
+```
+
+
+
+```{r}
+
+collegeData %>%
+
+  mutate(.,
+
+  學校代碼=as.factor(學校代碼),
+
+  學校名稱=as.factor(學校名稱)
+
+         ) -> collegeData2
+
+```
+
+
+
+```{r}
+
+collegeData %>%
+
+  mutate(
+
+  學校代碼=as.factor(學校代碼),
+
+  學校名稱=as.factor(學校名稱)
+
+         ) -> collegeData2
+
+```
+##6.3.1 mutate
+
+```{r}
+library(dplyr)
+mutate(
+  collegeData,
+  學校代碼=as.factor(學校代碼),
+  學校名稱=as.factor(學校名稱)
+  ) -> collegeData2
+```
+dplyr 輸出之後是一個FRAME
+```{r}
+head(collegeData)
+```
+collegeData 會
+
+
+1. 上述的程式如果用以前的寫法，要如何寫呢？
+```{r}
+library(dplyr)
+collegeData2$學校代碼 <- as.factor(collegeData$學校代碼)
+collegeData2$學校名稱 <- as.factor(collegeData$學校名稱)
+```
+
+
+2. 將日間/進修別，等級別改成factor，同時一年級男生，一年級女生改成numeric。
+```{r}
+library(dplyr)
+mutate(
+  collegeData,
+  `日間/進修別`=as.factor(`日間/進修別`),
+  等級別=as.factor(等級別),
+  一年級男生=as.numeric(一年級男生),
+  一年級女生=as.numeric(一年級女生)
+) ->
+  collegeData2.
+
+```
+
+3. 請使用%>%方式寫。
+
+
+```{r}
+collegeData2 %>%
+  
+```
+
+```{r}
+library(stringr)
+collegeData %>%
+  mutate(
+    一年級男生=str_replace(一年級男生,",",""),
+    一年級女生=str_replace(一年級女生,",","")
+  ) %>%
+  mutate(
+    一年級男生=as.numeric(一年級男生),
+    一年級女生=as.numeric(一年級女生)
+  ) -> collegeData3
+
+```
+##6.3.2 Parsing characters
+```{r}
+collegeData %>% 
+  mutate(
+    `日間∕進修別`=as.factor(`日間∕進修別`),
+    等級別=as.factor(等級別),
+    一年級男生=as.numeric(一年級男生),
+    一年級女生=as.numeric(一年級女生)
+  ) -> collegeData3
+```
+
+```{r}
+ Package readr parsers usages:
+parse_logical(x, na = c("", "NA"), locale = default_locale()) #locale 
+parse_integer(x, na = c("", "NA"), locale = default_locale())
+parse_double(x, na = c("", "NA"), locale = default_locale())
+parse_character(x, na = c("", "NA"), locale = default_locale())
+where
+na=... defines characters that should be parsed as NA.
+locale =... is used to setup an environment that describes certain patterns of writing used in some part of the world, where … can be supplied by locale() function. (Note：locale means 場景)
+grouping_mark (千分位符號)
+decimal_mark (小數點符號)
+```
+```{r}
+library(readr) #need
+cl<-locale(grouping_mark = ",") # 創造cl來描述千分位符號使用","的習慣場景
+collegeData %>% 
+  mutate(
+    `日間∕進修別`=as.factor(`日間∕進修別`),
+    等級別=as.factor(等級別),
+    一年級男生=parse_number(一年級男生,locale=cl),
+    一年級女生=parse_number(一年級女生,locale=cl)
+  ) -> collegeData4 #把一年級男生轉玩,且盡量產生problem的紀錄,為有些用肉眼抓不出
+```
+```{r}
+
+```
+*
+
+##6.3.3 Apply to multiple variables
+
+ - mutate_all(.data, .funs): for all variables 對所有變數做.funs的動作。.funs可使用funs()函數，使用範例如下：
+
+```{r} #建立資料及
+collegeData %>%
+select(一年級男生,一年級女生,
+二年級男生,二年級女生) ->college1stYear Data
+```
+```{r} mutateall 
+college1st
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
